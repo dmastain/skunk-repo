@@ -2,6 +2,7 @@ package skunk.domain;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class TestPredictableDie {
@@ -13,6 +14,28 @@ class TestPredictableDie {
 		assertEquals(1, die.getLastRoll());
 		die.roll();
 		assertEquals(2, die.getLastRoll());
+		die.roll();
+		assertEquals(3, die.getLastRoll());
 	}
+	
+	@Test
+	void test_PD_1_more_than_once() {
+		PredictableDie die = new PredictableDie(new int[] {1});
+		die.roll();
+		assertEquals(1,die.getLastRoll());
+		die.roll();
+		assertEquals(1,die.getLastRoll());
+	}
+	
+	@Test
+	void test_PD_wit_empty_initial_int_array()
+	{
+		Assertions.assertThrows(RuntimeException.class, () -> 
+		{
+			PredictableDie die = new PredictableDie( new int[] {});
+			die.roll();
+		});
+	}
+
 
 }

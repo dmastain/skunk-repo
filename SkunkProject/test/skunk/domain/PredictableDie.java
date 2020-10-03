@@ -10,6 +10,9 @@ public class PredictableDie {
 	}
 
 	public PredictableDie(int[] is) {
+		if (is.length == 0) {
+			throw new RuntimeException();
+		}
 		this.theRolls = is;
 		this.nextInt = 0;
 	}
@@ -17,6 +20,9 @@ public class PredictableDie {
 	public void roll() {
 		this.lastRoll = this.theRolls[this.nextInt];
 		this.nextInt++;
+		if (this.nextInt == this.theRolls.length) {
+			this.nextInt = 0;
+		}
 	}
 
 	public int getLastRoll() {
