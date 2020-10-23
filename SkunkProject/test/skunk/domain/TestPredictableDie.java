@@ -28,7 +28,7 @@ class TestPredictableDie {
 	}
 	
 	@Test
-	void test_PD_wit_empty_initial_int_array()
+	void test_PD_with_empty_initial_int_array()
 	{
 		Assertions.assertThrows(RuntimeException.class, () -> 
 		{

@@ -7,7 +7,7 @@ public class TestDie
 {
 
 	@Test
-	public void test()
+	public void test_roll_in_bounds()
 	{
 		fail("Not yet implemented");
 	}
