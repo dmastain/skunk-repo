@@ -8,6 +8,10 @@ public class Die
 	{
 		this.roll();
 	}
+	
+	public Die(int i) {
+		this.lastRoll = i;
+	}
 
 	public int getLastRoll() // getter or accessor method
 	{

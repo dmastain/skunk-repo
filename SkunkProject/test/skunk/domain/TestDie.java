@@ -21,4 +21,19 @@ public class TestDie {
 		assertEquals(i, pass);
 	}
 	
+	@Test
+	public void test_roll_1000_die_fairness() {
+		int roll;
+		int i;
+		float average = 0;
+		Die die = new Die();
+		for (i = 1; i <= 1000; i++) {
+			die.roll();
+			roll = die.getLastRoll();
+			average += roll;
+		}
+		average = average / i;
+		assertEquals(3.5, average, .2);
+	}
+	
 }
