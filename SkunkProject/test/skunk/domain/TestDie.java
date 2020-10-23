@@ -36,4 +36,13 @@ public class TestDie {
 		assertEquals(3.5, average, .2);
 	}
 	
+	@Test
+	public void test_die_to_string() {
+		Die die = new Die();
+		int roll = die.getLastRoll();
+		String expected = "Die: " + roll;
+ 		String str = die.toString();
+ 		assertEquals(str, expected);
+	}
+	
 }
