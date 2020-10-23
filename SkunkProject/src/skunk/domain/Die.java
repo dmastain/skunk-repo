@@ -23,6 +23,10 @@ public class Die
 	{
 		this.lastRoll = (int) (Math.random() * 6 + 1);
 	}
+	
+	public void roll(int i) {
+		this.lastRoll = i;
+	}
 
 	@Override
 	public String toString() // this OVERRIDES the default Object.toString()
