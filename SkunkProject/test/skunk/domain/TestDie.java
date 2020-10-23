@@ -3,12 +3,10 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestDie
-{
+public class TestDie {
 
 	@Test
-	public void test_roll_100_in_bounds()
-	{
+	public void test_roll_100_die_in_bounds() {
 		int roll;
 		int i;
 		int pass = 0;
@@ -22,5 +20,5 @@ public class TestDie
 		}
 		assertEquals(i, pass);
 	}
-
+	
 }
