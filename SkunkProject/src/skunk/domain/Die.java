@@ -9,7 +9,8 @@ public class Die
 		this.roll();
 	}
 	
-	public Die(int i) {
+	public Die(int i) 
+	{
 		this.lastRoll = i;
 	}
 
@@ -18,13 +19,13 @@ public class Die
 		return this.lastRoll;
 	}
 
-	public void roll() // note how this changes Die's state, but doesn't return
-						// anything
+	public void roll() // note how this changes Die's state, but doesn't return anything
 	{
 		this.lastRoll = (int) (Math.random() * 6 + 1);
 	}
 	
-	public void roll(int i) {
+	public void roll(int i) 
+	{
 		this.lastRoll = i;
 	}
 
