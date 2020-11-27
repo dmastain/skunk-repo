@@ -5,10 +5,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class TestPredictableDie {
-
+class TestPredictableDie 
+{
 	@Test
-	void test_PDie_1_2_3() {
+	void test_PDie_1_2_3()
+	{
 		Die die = new Die(1);
 		die.roll(1);
 		assertEquals(1, die.getLastRoll());
@@ -19,12 +20,12 @@ class TestPredictableDie {
 	}
 	
 	@Test
-	void test_PDie_1_more_than_once() {
+	void test_PDie_1_more_than_once()
+	{
 		Die die = new Die(1);
 		die.roll(1);
 		assertEquals(1,die.getLastRoll());
 		die.roll(1);
 		assertEquals(1,die.getLastRoll());
 	}
-	
 }

@@ -14,7 +14,7 @@ public class Die
 		this.lastRoll = i;
 	}
 
-	public int getLastRoll() // getter or accessor method
+	public int getLastRoll() // getter method
 	{
 		return this.lastRoll;
 	}

@@ -8,7 +8,8 @@ import org.junit.jupiter.api.Test;
 class TestPredictableDice {
 
 	@Test
-	void test_PDice_Overload_Constructor() {
+	void test_PDice_Overload_Constructor()
+	{
 		Die die1 = new Die(1);
 		Die die2 = new Die(2);
 		Dice dice = new Dice(die1, die2);

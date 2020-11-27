@@ -3,7 +3,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestDie
+public class 
+
 {
 	@Test
 	public void test_roll_100_die_in_bounds() 
