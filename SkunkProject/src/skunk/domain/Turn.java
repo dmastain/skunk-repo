@@ -26,7 +26,11 @@ public class Turn
 		{
 			this.endTurn = true;
 			
-			if ((dice.getDie1LastRoll() == 1 && dice.getDie2LastRoll() == 2) || (dice.getDie1LastRoll() == 2 && dice.getDie2LastRoll() == 1))
+			if (dice.getDie1LastRoll() == 1 && dice.getDie2LastRoll() == 1)
+			{
+				this.lostChips = 4;
+			}
+			else if ((dice.getDie1LastRoll() == 1 && dice.getDie2LastRoll() == 2) || (dice.getDie1LastRoll() == 2 && dice.getDie2LastRoll() == 1))
 			{
 				this.lostChips = 2;
 			}
@@ -45,7 +49,11 @@ public class Turn
 		{
 			this.endTurn = true;
 			
-			if ((dice.getDie1LastRoll() == 1 && dice.getDie2LastRoll() == 2) || (dice.getDie1LastRoll() == 2 && dice.getDie2LastRoll() == 1))
+			if (dice.getDie1LastRoll() == 1 && dice.getDie2LastRoll() == 1)
+			{
+				this.lostChips = 4;
+			}
+			else if ((dice.getDie1LastRoll() == 1 && dice.getDie2LastRoll() == 2) || (dice.getDie1LastRoll() == 2 && dice.getDie2LastRoll() == 1))
 			{
 				this.lostChips = 2;
 			}
