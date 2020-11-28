@@ -40,4 +40,16 @@ public class TestPredictableTurn
 		turn.addRoll(dice);
 		assertEquals(true, turn.isEndTurn());
 	}
+	
+	@Test
+	void test_end_PTurn_single_skunk_remove_chips()
+	{
+		Player player = new Player("Dan");
+		Turn turn = new Turn(player);
+		Die die1 = new Die(1);
+		Die die2 = new Die(5);
+		Dice dice = new Dice(die1, die2);
+		turn.addRoll(dice);
+		assertEquals(1, turn.getLostChips());
+	}
 }
