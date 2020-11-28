@@ -1,6 +1,7 @@
 package skunk.domain;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,5 +27,17 @@ public class TestPredictableTurn
 		dice.roll(die1,die2);
 		turn.addRoll(dice);
 		assertArrayEquals(turn.getRolls().toArray(),pRolls.toArray());
+	}
+	
+	@Test
+	void test_end_PTurn_skunk()
+	{
+		Player player = new Player("Dan");
+		Turn turn = new Turn(player);
+		Die die1 = new Die(1);
+		Die die2 = new Die(5);
+		Dice dice = new Dice(die1, die2);
+		turn.addRoll(dice);
+		assertEquals(true, turn.isEndTurn());
 	}
 }
