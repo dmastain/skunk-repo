@@ -35,6 +35,8 @@ public class Turn
 		if (dice.getDie1LastRoll() == 1 || dice.getDie2LastRoll() == 1)
 		{
 			this.endTurn = true;
+
+			this.lostChips = 1;
 		}
 	}
 	
