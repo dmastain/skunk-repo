@@ -66,7 +66,14 @@ public class Dice
 		die1.roll();
 		die2.roll();
 		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
+	}
+	
+	public void roll(Die die1, Die die2)
+	{
+		// Roll each of die1, die2, sum their last rolls,
+		// then set Dice.lastRoll to this value
 
+		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
 	}
 
 	// the following method converts the internals of

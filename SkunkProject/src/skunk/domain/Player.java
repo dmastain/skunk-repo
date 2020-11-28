@@ -12,6 +12,7 @@ public class Player
 		this.name = name;
 		this.score = 0;
 		this.chips = 50;
+		this.dice = new Dice();
 	}
 	
 	public Player(String name, Dice dice)
