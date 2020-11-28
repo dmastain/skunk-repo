@@ -22,12 +22,20 @@ public class Turn
 		Dice dice = player.getDice();
 		int roll = dice.getLastRoll();
 		rolls.add(roll);
+		if (dice.getDie1LastRoll() == 1 || dice.getDie2LastRoll() == 1)
+		{
+			this.endTurn = true;
+		}
 	}
 	
 	public void addRoll(Dice dice)
 	{
 		int roll = dice.getLastRoll();
 		rolls.add(roll);
+		if (dice.getDie1LastRoll() == 1 || dice.getDie2LastRoll() == 1)
+		{
+			this.endTurn = true;
+		}
 	}
 	
 	public List<Integer> getRolls() {
