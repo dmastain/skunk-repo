@@ -25,6 +25,15 @@ public class Turn
 		if (dice.getDie1LastRoll() == 1 || dice.getDie2LastRoll() == 1)
 		{
 			this.endTurn = true;
+			
+			if ((dice.getDie1LastRoll() == 1 && dice.getDie2LastRoll() == 2) || (dice.getDie1LastRoll() == 2 && dice.getDie2LastRoll() == 1))
+			{
+				this.lostChips = 2;
+			}
+			else
+			{
+				this.lostChips = 1;
+			}
 		}
 	}
 	
@@ -35,8 +44,15 @@ public class Turn
 		if (dice.getDie1LastRoll() == 1 || dice.getDie2LastRoll() == 1)
 		{
 			this.endTurn = true;
-
-			this.lostChips = 1;
+			
+			if ((dice.getDie1LastRoll() == 1 && dice.getDie2LastRoll() == 2) || (dice.getDie1LastRoll() == 2 && dice.getDie2LastRoll() == 1))
+			{
+				this.lostChips = 2;
+			}
+			else
+			{
+				this.lostChips = 1;
+			}
 		}
 	}
 	
