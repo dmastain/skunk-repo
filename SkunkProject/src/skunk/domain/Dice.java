@@ -32,12 +32,22 @@ public class Dice
 		this.die2 = new Die();
 		this.roll();
 	}
-
+	
 	public Dice(Die die1, Die die2) // overloaded constructor
 	{
 		this.die1 = die1;
 		this.die2 = die2;
 		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
+	}
+
+	public int getDie1LastRoll() 
+	{
+		return die1.getLastRoll();
+	}
+
+	public int getDie2LastRoll() 
+	{
+		return die2.getLastRoll();
 	}
 
 	// Instance methods can also be declared anywhere in body of class

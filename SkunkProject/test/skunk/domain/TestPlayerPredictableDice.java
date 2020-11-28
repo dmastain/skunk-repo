@@ -13,8 +13,8 @@ public class TestPlayerPredictableDice
 		Die die2 = new Die(2);
 		Dice dice = new Dice(die1, die2);
 		Player player = new Player("Dan", dice);
-		assertEquals(1, player.dice.die1.getLastRoll());
-		assertEquals(2, player.dice.die2.getLastRoll());
-		assertEquals(3, player.dice.getLastRoll());
+		assertEquals(1, player.getDice().getDie1LastRoll());
+		assertEquals(2, player.getDice().getDie2LastRoll());
+		assertEquals(3, player.getDice().getLastRoll());
 	}
 }

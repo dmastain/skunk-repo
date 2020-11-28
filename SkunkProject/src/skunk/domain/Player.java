@@ -5,12 +5,21 @@ public class Player
 	private String name;
 	private int score;
 	private int chips;
+	private Dice dice;
 	
 	public Player(String name)
 	{
 		this.name = name;
 		this.score = 0;
 		this.chips = 50;
+	}
+	
+	public Player(String name, Dice dice)
+	{
+		this.name = name;
+		this.score = 0;
+		this.chips = 50;
+		this.dice = dice;
 	}
 
 	public int getScore()
@@ -36,6 +45,10 @@ public class Player
 	public String getName() 
 	{
 		return name;
+	}
+
+	public Dice getDice() {
+		return dice;
 	}
 
 }
