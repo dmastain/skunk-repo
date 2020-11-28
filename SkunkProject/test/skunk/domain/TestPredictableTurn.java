@@ -26,7 +26,7 @@ public class TestPredictableTurn
 		die2.roll(4);
 		dice.roll(die1,die2);
 		turn.addRoll(dice);
-		assertArrayEquals(turn.getRolls().toArray(),pRolls.toArray());
+		assertArrayEquals(turn.getDiceRolls().toArray(),pRolls.toArray());
 	}
 	
 	@Test
