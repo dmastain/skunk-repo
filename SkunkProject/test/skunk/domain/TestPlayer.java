@@ -21,6 +21,13 @@ class TestPlayer
 		int score = player.getScore();
 		assertEquals(0, score);
 	}
+	 @Test
+	void test_init_player_chips() 
+	{
+		Player player = new Player("Dan");
+		int chips = player.getChips();
+		assertEquals(50, chips);
+	}
 	
 	@Test
 	void test_player_set_score() 
@@ -29,5 +36,14 @@ class TestPlayer
 		int score = 5;
 		player.setScore(score);
 		assertEquals(score, player.getScore());
+	}
+	
+	@Test
+	void test_player_set_chips() 
+	{
+		Player player = new Player("Dan");
+		int chips = 5;
+		player.setScore(chips);
+		assertEquals(chips, player.getScore());
 	}
 }
