@@ -43,7 +43,7 @@ class TestPlayer
 	{
 		Player player = new Player("Dan");
 		int chips = 5;
-		player.setScore(chips);
-		assertEquals(chips, player.getScore());
+		player.setChips(chips);
+		assertEquals(chips, player.getChips());
 	}
 }
