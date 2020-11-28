@@ -14,23 +14,31 @@ public class TestPredictableTurn
 	void test_PTurn_add_rolls()
 	{
 		List<Integer> pRolls = new ArrayList<Integer>();
+		List<Integer> pRollsDie1 = new ArrayList<Integer>();
+		List<Integer> pRollsDie2 = new ArrayList<Integer>();
 		Player player = new Player("Dan");
 		Turn turn = new Turn(player);
+		pRollsDie1.add(1);
+		pRollsDie2.add(2);
 		pRolls.add(3);
 		Die die1 = new Die(1);
 		Die die2 = new Die(2);
 		Dice dice = new Dice(die1, die2);
 		turn.addRoll(dice);
+		pRollsDie1.add(5);
+		pRollsDie2.add(4);
 		pRolls.add(9);
 		die1.roll(5);
 		die2.roll(4);
 		dice.roll(die1,die2);
 		turn.addRoll(dice);
 		assertArrayEquals(turn.getDiceRolls().toArray(),pRolls.toArray());
+		assertArrayEquals(turn.getDie1Rolls().toArray(),pRollsDie1.toArray());
+		assertArrayEquals(turn.getDie2Rolls().toArray(),pRollsDie2.toArray());
 	}
 	
 	@Test
-	void test_end_PTurn_skunk()
+	void test_PTurn_skunk_end_turn()
 	{
 		Player player = new Player("Dan");
 		Turn turn = new Turn(player);
@@ -38,6 +46,58 @@ public class TestPredictableTurn
 		Die die2 = new Die(5);
 		Dice dice = new Dice(die1, die2);
 		turn.addRoll(dice);
+		assertEquals(true, turn.isEndTurn());
+	}
+	
+	@Test
+	void test_end_PTurn_single_skunk_die1()
+	{
+		Player player = new Player("Dan");
+		Turn turn = new Turn(player);
+		Die die1 = new Die(1);
+		Die die2 = new Die(5);
+		Dice dice = new Dice(die1, die2);
+		turn.addRoll(dice);
+		assertEquals(true, turn.isSkunked());
+		assertEquals(true, turn.isEndTurn());
+	}
+	
+	@Test
+	void test_end_PTurn_single_skunk_die2()
+	{
+		Player player = new Player("Dan");
+		Turn turn = new Turn(player);
+		Die die1 = new Die(5);
+		Die die2 = new Die(1);
+		Dice dice = new Dice(die1, die2);
+		turn.addRoll(dice);
+		assertEquals(true, turn.isSkunked());
+		assertEquals(true, turn.isEndTurn());
+	}
+	
+	@Test
+	void test_end_PTurn_double_skunk()
+	{
+		Player player = new Player("Dan");
+		Turn turn = new Turn(player);
+		Die die1 = new Die(1);
+		Die die2 = new Die(1);
+		Dice dice = new Dice(die1, die2);
+		turn.addRoll(dice);
+		assertEquals(true, turn.isSkunked());
+		assertEquals(true, turn.isEndTurn());
+	}
+	
+	@Test
+	void test_end_PTurn_duce_skunk()
+	{
+		Player player = new Player("Dan");
+		Turn turn = new Turn(player);
+		Die die1 = new Die(1);
+		Die die2 = new Die(1);
+		Dice dice = new Dice(die1, die2);
+		turn.addRoll(dice);
+		assertEquals(true, turn.isSkunked());
 		assertEquals(true, turn.isEndTurn());
 	}
 	
