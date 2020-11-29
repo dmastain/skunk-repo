@@ -68,7 +68,7 @@ public class Turn
 		return rollResult;
 	}
 	
-	public static int sumDiceRolls()
+	public int sumDiceRolls()
 	{
 	    int sum = 0;
 	    for (int i: diceRolls) 

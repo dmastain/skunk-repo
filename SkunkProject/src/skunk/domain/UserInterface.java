@@ -1,10 +1,13 @@
 package skunk.domain;
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.List;
 
 import edu.princeton.cs.introcs.*;
 
 public class UserInterface
 {
+	final String operatingSystem = System.getProperty("os.name");
 	public UserInterface() 
 	{
 		StdOut.print("Welcome to Skunk!\n");
@@ -25,6 +28,15 @@ public class UserInterface
 		StdOut.println("Name: " + player.getName() + " | Score: " + player.getScore() + " | Chips:" + player.getChips());
 	}
 	
+	public void displayScoreBoard(List<Player> playerList)
+	{
+		for (int pNum = 0; pNum < playerList.size(); pNum++) 
+		{
+			Player player = playerList.get(pNum) ;
+			displayPlayerInfo(player);
+		}
+	}
+	
 	public void printOut(String str)
 	{
 		StdOut.println(str);
@@ -33,6 +45,7 @@ public class UserInterface
 	public void printTurn(Turn turn)
 	{
 		Player player = turn.getPlayer();
+		String resultStr = "Turn Result: ";
 		String chipStr = player.getName() + "'s Lost Chips: " + turn.lostChips;
 		String rollStr = player.getName() + "'s Dice Rolls: ";
 		List<Integer> diceRolls = turn.getDiceRolls();
@@ -48,6 +61,23 @@ public class UserInterface
 			rollStr += "{" + diceRolls.get(i) + "}:" + "[" + die1Rolls.get(i) + "," + die2Rolls.get(i) + "]";
 		}
 		
+		switch(turn.getLostChips())
+		{
+		case 0:
+			resultStr += turn.sumDiceRolls() + " points earned!";
+			break;
+		case 1:
+			resultStr += "Single Skunk...";
+			break;
+		case 2:
+			resultStr += "Skunk Duce...";
+			break;
+		case 4:
+			resultStr += "Double Skunk...";
+			break;
+		}
+		
+		StdOut.println(resultStr);
 		StdOut.println(rollStr);
 		StdOut.println(chipStr);
 	}
@@ -74,5 +104,44 @@ public class UserInterface
 			endTurn = promptPlayerEndTurn(player);
 		}
 		return endTurn;
+	}
+	
+	public int promptNumPlayers()
+	{
+		int value = 0;
+		
+		StdOut.print("Enter number of players in this game:");
+
+		try
+		{
+			value = StdIn.readInt();
+		}
+		catch(InputMismatchException e)
+		{
+			StdOut.println("Invalid input type!");
+			value = promptNumPlayers();
+		}
+		
+		return value;
+	}
+	
+	public void finalTurn()
+	{
+		StdOut.println("Final turn for remaining players!");
+	}
+	
+	public void displayKitty(int kitty)
+	{
+		StdOut.println("Kitty: " + kitty);
+	}
+	
+	public void printBreak()
+	{
+		StdOut.println("\n---------------------------------\n");
+	}
+	
+	public void printWinner(Player player, int kitty)
+	{
+		StdOut.println("Winner " + player.getName() + " awarded " + kitty + " chips from the kitty");
 	}
 }
