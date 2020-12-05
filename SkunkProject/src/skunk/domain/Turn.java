@@ -23,20 +23,19 @@ public class Turn
 		skunked = false;
 	}
 	
-	public String addRoll()
+	public void addRoll()
 	{
 		Dice dice = player.getDice();
 		dice.roll();
-		return addRoll(dice);
+		addRoll(dice);
 	}
 	
-	public String addRoll(Dice dice)
+	public void addRoll(Dice dice)
 	{
 		int roll = dice.getLastRoll();
 		die1Rolls.add(dice.getDie1LastRoll());
 		die2Rolls.add(dice.getDie2LastRoll());
 		diceRolls.add(roll);
-		String rollResult = dice.toString();
 		
 		if (dice.getDie1LastRoll() == 1 || dice.getDie2LastRoll() == 1)
 		{
@@ -46,26 +45,18 @@ public class Turn
 			{
 				this.lostChips = 4;
 				this.skunked = true;
-				rollResult = rollResult.concat("\nDouble Skunk!");
 			}
 			else if ((dice.getDie1LastRoll() == 1 && dice.getDie2LastRoll() == 2) || (dice.getDie1LastRoll() == 2 && dice.getDie2LastRoll() == 1))
 			{
 				this.lostChips = 2;
-				this.skunked = true;
-				rollResult = rollResult.concat("\nSkunk Duce!");
+				this.skunked = true;	
 			} 
 			else
 			{
 				this.lostChips = 1;
 				this.skunked = true;
-				rollResult = rollResult.concat("\nSingle Skunk!");
 			}
 		}
-		else
-		{
-			rollResult = rollResult + "\nTurn total: " + sumDiceRolls();			
-		}
-		return rollResult;
 	}
 	
 	public static int sumDiceRolls()

@@ -10,7 +10,6 @@ public class UserInterface
 		StdOut.print("Welcome to Skunk!\n");
 	}
 	
-	
 	public String promptPlayerName()
 	{	
 		StdOut.print("Enter player name:");
@@ -25,6 +24,11 @@ public class UserInterface
 		StdOut.println("Name: " + player.getName() + " | Score: " + player.getScore() + " | Chips:" + player.getChips());
 	}
 	
+	public void displayKitty(int kitty)
+	{
+		StdOut.println("Kitty: " + kitty);
+	}
+	
 	public void printOut(String str)
 	{
 		StdOut.println(str);
@@ -33,6 +37,7 @@ public class UserInterface
 	public void printTurn(Turn turn)
 	{
 		Player player = turn.getPlayer();
+		String resultStr = "Turn Result: ";
 		String chipStr = player.getName() + "'s Lost Chips: " + turn.lostChips;
 		String rollStr = player.getName() + "'s Dice Rolls: ";
 		List<Integer> diceRolls = turn.getDiceRolls();
@@ -48,6 +53,23 @@ public class UserInterface
 			rollStr += "{" + diceRolls.get(i) + "}:" + "[" + die1Rolls.get(i) + "," + die2Rolls.get(i) + "]";
 		}
 		
+		switch(turn.getLostChips())
+		{
+		case 0:
+			resultStr += turn.sumDiceRolls() + " points earned!";
+			break;
+		case 1:
+			resultStr += "Single Skunk...";
+			break;
+		case 2:
+			resultStr += "Skunk Duce...";
+			break;
+		case 4:
+			resultStr += "Double Skunk...";
+			break;
+		}
+		
+		StdOut.println(resultStr);
 		StdOut.println(rollStr);
 		StdOut.println(chipStr);
 	}

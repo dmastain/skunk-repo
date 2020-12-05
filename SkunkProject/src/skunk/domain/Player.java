@@ -48,7 +48,8 @@ public class Player
 		return name;
 	}
 
-	public Dice getDice() {
+	public Dice getDice()
+	{
 		return dice;
 	}
 

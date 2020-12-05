@@ -2,41 +2,64 @@ package skunk.domain;
 
 public class Controller 
 {	
-	public static void main(String[] args)
+	private Player currentPlayer;
+	private Turn currentTurn;
+	private int kitty;
+	
+	public Controller(Player player)
+	{
+		this.currentPlayer = player;
+		this.kitty = 0;
+	}
+	
+	public boolean turnControl(boolean endTurn)
 	{	
-		UserInterface ui = new UserInterface();
-				
-		String name = ui.promptPlayerName();
-		Player player = new Player(name);
-		ui.displayPlayerInfo(player);
-		Turn turn = new Turn(player);
-		turn.setEndTurn(ui.promptPlayerEndTurn(player));
-		
-		while(turn.isEndTurn() != true)
+		if(endTurn != true)
 		{		
-			String rollResult = turn.addRoll();
-			ui.printOut(rollResult);
-			if (turn.isEndTurn() != true)
+			currentTurn.addRoll();
+			
+			if (currentTurn.isSkunked() != true)
 			{
-				turn.setEndTurn(ui.promptPlayerEndTurn(player));
+				int score = currentPlayer.getScore();
+				score += Turn.sumDiceRolls();
+				currentPlayer.setScore(score);
+			}
+			else
+			{
+				int chips = currentPlayer.getChips();
+				int lostChips = currentTurn.getLostChips();
+				chips -= lostChips;
+				addKitty(lostChips);
+				currentPlayer.setChips(chips);
+				endTurn = true;
 			}
 		}
-		
-		if (turn.isSkunked() != true)
-		{
-			int score = player.getScore();
-			score += Turn.sumDiceRolls();
-			player.setScore(score);
-		}
-		else
-		{
-			int chips = player.getChips();
-			chips -= turn.getLostChips();
-			player.setChips(chips);
-		}
-		
-		ui.printTurn(turn);
-		ui.displayPlayerInfo(player);
+		return endTurn;
+	}
+
+	public int getKitty()
+	{
+		return kitty;
+	}
+
+	public void addKitty(int chips) 
+	{
+		this.kitty += chips;
+	}
+
+	public Player getCurrentPlayer()
+	{
+		return currentPlayer;
+	}
+
+	public Turn getCurrentTurn() 
+	{
+		return this.currentTurn;
+	}
+
+	public void newTurn() 
+	{
+		this.currentTurn = new Turn(getCurrentPlayer());
 	}
 }
 
