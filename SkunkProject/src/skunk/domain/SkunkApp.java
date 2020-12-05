@@ -26,12 +26,15 @@ public class SkunkApp
 			if (endTurn == false)
 			{
 				endTurn = ui.promptPlayerEndTurn(controller.getCurrentPlayer());
+				if (endTurn == false)
+				{
+					controller.setRoll(true);
+				}
 			}
 			else
 			{
 				break;
 			}
-			
 		}
 		
 		ui.displayPlayerInfo(player);

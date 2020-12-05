@@ -38,6 +38,26 @@ public class TestPredictableTurn
 	}
 	
 	@Test
+	void test_PTurn_sum_rolls()
+	{
+		Player player = new Player("Dan");
+		Turn turn = new Turn(player);
+
+		Die die1 = new Die(2);
+		Die die2 = new Die(2);
+		Dice dice = new Dice(die1, die2);
+		turn.addRoll(dice);
+
+		die1.roll(5);
+		die2.roll(4);
+		dice.roll(die1,die2);
+		turn.addRoll(dice);
+		
+		int sum = turn.sumDiceRolls();
+		assertEquals(sum, 2+2+5+4);
+	}
+	
+	@Test
 	void test_PTurn_skunk_end_turn()
 	{
 		Player player = new Player("Dan");
@@ -89,12 +109,25 @@ public class TestPredictableTurn
 	}
 	
 	@Test
-	void test_end_PTurn_duce_skunk()
+	void test_end_PTurn_duce_skunk_die1()
+	{
+		Player player = new Player("Dan");
+		Turn turn = new Turn(player);
+		Die die1 = new Die(2);
+		Die die2 = new Die(1);
+		Dice dice = new Dice(die1, die2);
+		turn.addRoll(dice);
+		assertEquals(true, turn.isSkunked());
+		assertEquals(true, turn.isEndTurn());
+	}
+	
+	@Test
+	void test_end_PTurn_duce_skunk_die2()
 	{
 		Player player = new Player("Dan");
 		Turn turn = new Turn(player);
 		Die die1 = new Die(1);
-		Die die2 = new Die(1);
+		Die die2 = new Die(2);
 		Dice dice = new Dice(die1, die2);
 		turn.addRoll(dice);
 		assertEquals(true, turn.isSkunked());
@@ -155,4 +188,5 @@ public class TestPredictableTurn
 		turn.addRoll(dice);
 		assertEquals(4, turn.getLostChips());
 	}
+	
 }
