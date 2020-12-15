@@ -18,18 +18,14 @@ public class SkunkApp
 		
 		controller.newTurn();
 		
-		while(endTurn == false)
+		while(true)
 		{
 			endTurn = controller.turnControl(endTurn);
 			ui.printTurn(controller.getCurrentTurn());
 
 			if (endTurn == false)
 			{
-				endTurn = ui.promptPlayerEndTurn(controller.getCurrentPlayer());
-				if (endTurn == false)
-				{
-					controller.setRoll(true);
-				}
+				endTurn = ui.promptPlayerRollAgain(controller.getCurrentPlayer());
 			}
 			else
 			{

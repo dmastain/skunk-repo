@@ -56,7 +56,7 @@ public class UserInterface
 		switch(turn.getLostChips())
 		{
 		case 0:
-			resultStr += turn.sumDiceRolls() + " points earned!";
+			resultStr += turn.lastRoll() + " points earned!";
 			break;
 		case 1:
 			resultStr += "Single Skunk...";
@@ -74,14 +74,28 @@ public class UserInterface
 		StdOut.println(chipStr);
 	}
 	
+	public boolean promptPlayerRollAgain(Player player)
+	{
+		StdOut.print("Will " + player.getName() + " roll again? (Y/N):");
+	
+		boolean endTurn = !promptYesNo();
+		
+		return endTurn;
+	}
+	
 	public boolean promptPlayerEndTurn(Player player)
+	{		
+		StdOut.print("End " + player.getName() + "'s turn(Y/N):");
+		
+		return promptYesNo();
+	}
+
+	private boolean promptYesNo() 
 	{
 		boolean endTurn;
 		
-		StdOut.print("End " + player.getName() + "'s turn(Y/N):");
-		
 		String end = StdIn.readString();
-
+		
 		if (end.equalsIgnoreCase("Y") || end.equalsIgnoreCase("Yes")) 
 		{
 			endTurn = true;
@@ -93,7 +107,7 @@ public class UserInterface
 		else
 		{
 			StdOut.println("Invalid response");
-			endTurn = promptPlayerEndTurn(player);
+			endTurn = promptYesNo();
 		}
 		return endTurn;
 	}

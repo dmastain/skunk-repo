@@ -74,11 +74,13 @@ public class Turn
 		this.endTurn = endTurn;
 	}
 
-	public List<Integer> getDie1Rolls() {
+	public List<Integer> getDie1Rolls() 
+	{
 		return die1Rolls;
 	}
 
-	public List<Integer> getDie2Rolls() {
+	public List<Integer> getDie2Rolls()
+	{
 		return die2Rolls;
 	}
 
@@ -105,5 +107,10 @@ public class Turn
 	public boolean isSkunked()
 	{
 		return skunked;
+	}
+	
+	public int lastRoll()
+	{
+		return diceRolls.get(diceRolls.size() - 1);
 	}
 }
