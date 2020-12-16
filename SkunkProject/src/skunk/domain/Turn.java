@@ -111,6 +111,14 @@ public class Turn
 	
 	public int lastRoll()
 	{
-		return diceRolls.get(diceRolls.size() - 1);
+		int index = diceRolls.size() - 1;
+		if (index == -1)
+		{
+			return 0;
+		}
+		else
+		{
+			return diceRolls.get(index);
+		}	
 	}
 }

@@ -1,4 +1,5 @@
 package skunk.domain;
+import java.util.InputMismatchException;
 import java.util.List;
 
 import edu.princeton.cs.introcs.*;
@@ -18,6 +19,26 @@ public class UserInterface
 		
 		return name;
 	}
+	
+	public int promptNumPlayers()
+	{
+		int value = 0;
+		
+		StdOut.print("Enter number of players in this game:");
+
+		try
+		{
+			value = StdIn.readInt();
+		}
+		catch(InputMismatchException e)
+		{
+			StdOut.println("Invalid input type!");
+			value = promptNumPlayers();
+		}
+		
+		return value;
+	}
+	
 	
 	public void displayPlayerInfo(Player player)
 	{
@@ -110,5 +131,29 @@ public class UserInterface
 			endTurn = promptYesNo();
 		}
 		return endTurn;
+	}
+	
+	public void displayScoreBoard(List<Player> playerList)
+	{
+		for (int pNum = 0; pNum < playerList.size(); pNum++) 
+		{
+			Player player = playerList.get(pNum) ;
+			displayPlayerInfo(player);
+		}
+	}
+	
+	public void finalTurn()
+	{
+		StdOut.println("Final turn for remaining players!");
+	}
+	
+	public void printBreak()
+	{
+		StdOut.println("\n---------------------------------\n");
+	}
+	
+	public void printWinner(Player winner, int kitty) 
+	{
+		StdOut.println("Winner " + winner.getName() + " awarded " + kitty + " chips from the kitty");
 	}
 }
