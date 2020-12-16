@@ -45,7 +45,7 @@ public class SkunkApp
 					endTurn = controller.turnControl(endTurn);
 					ui.printTurn(controller.getCurrentTurn());
 					
-					if (player.getScore() >= 35)
+					if (player.getScore() >= 100)
 					{	
 						
 						ui.printBreak();

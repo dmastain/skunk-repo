@@ -58,6 +58,27 @@ public class TestPredictableTurn
 	}
 	
 	@Test
+	void test_PTurn_last_roll()
+	{
+		Player player = new Player("Dan");
+		Turn turn = new Turn(player);
+
+		Die die1 = new Die(2);
+		Die die2 = new Die(2);
+		Dice dice = new Dice(die1, die2);
+		turn.addRoll(dice);
+
+		die1.roll(5);
+		die2.roll(4);
+		dice.roll(die1,die2);
+		turn.addRoll(dice);
+		
+		int predictLastRoll = 9;
+		int lastRoll = turn.lastRoll();
+		assertEquals(lastRoll, predictLastRoll);
+	}
+	
+	@Test
 	void test_PTurn_skunk_end_turn()
 	{
 		Player player = new Player("Dan");

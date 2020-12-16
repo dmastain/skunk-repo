@@ -104,11 +104,6 @@ public class Controller
 	{
 		return numPlayers;
 	}
-
-	public void setNumPlayers(int numPlayers) 
-	{
-		this.numPlayers = numPlayers;
-	}
 	
 	public List<Player> getPlayerList() 
 	{
